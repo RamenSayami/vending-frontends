@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body,html{
+    height: 100%;
+    position: relative;
+}
+
+.center-overall{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}

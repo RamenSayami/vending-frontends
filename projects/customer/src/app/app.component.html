@@ -1,0 +1,114 @@
+<div class="center-overall">
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h3>Vending Machine </h3>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <table class="table">
+                  <thead>
+                    <th scope="col"> Drink </th>
+                    <th scope="col"> Price </th>
+                    <th scope="col"> Left </th>
+                    <th scope="col"> Action </th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let inventory of inventories">
+                      <td scope="row"> {{inventory.name}} </td>
+                      <td scope="row"> Rs.{{inventory.price}} </td>
+                      <td scope="row"> {{inventory.currentStock}} </td>
+                      <td scope="row"> <button class="btn btn-primary" (click)="selectInventory(inventory)"> Select
+                        </button> </td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-lg-6">
+
+            <div class="card" *ngIf="selectedDrink">
+              <div class="card-header">
+                <h4>Selected Drink : {{selectedDrink.name}} </h4>
+
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5>Price per bottle: Rs.{{ selectedDrink.price}}</h5>
+
+                    </div>
+                    <div class="card-body">
+                      <h5>Bottles Left: {{ selectedDrink.currentStock}}</h5>
+                    </div>
+                    <div class="card-footer">
+                      <h5>Grand Total: Rs.{{ f.value.quantity * selectedDrink.price}} </h5>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <form #f="ngForm" (ngSubmit)="buyDrinks(f)" class="form-group">
+                    <div class="form-group">
+                      <label for="quantity1">How many do you want?</label>
+                      <input name="quantity" ngModel required #quantity="ngModel" type="number" min="1"
+                        max="{{selectedDrink.currentStock}}" class="form-control" id="drinkQuantity"
+                        placeholder="Enter Quantity">
+                    </div>
+                    <div class="form-group">
+                      <label for="coins1">Insert Coins</label>
+                      <input name="coins" ngModel required #coins="ngModel" type="number" min="1" class="form-control"
+                        id="insertcoins" placeholder="Coins" ng-model="coins">>
+                      <small id="coinValue" class="form-text text-muted">Coin Value: {{coinValue?.numberValue}} </small>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Buy Drinks</button>
+                  </form>
+
+                </div>
+              </div>
+              <!-- <div class="card-body">
+                <div>
+
+
+                  Enter Quantity: <input class="input" type="number" placeholder="quantity"><br>
+                  Enter Coins:<input type="number" placeholder="coins">
+                  <button class="btn btn-danger">Buy Drinks</button>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card" *ngIf="reciept">
+              <div class="card-header">
+                Reciept
+              </div>
+              <div class="card-body">
+
+              </div>
+              <div class="card-footer">
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <p class="text-success"> {{successMessage}} </p>
+      <p class="text-danger"> {{errorMessage}} </p>
+    </div>
+  </div>
+  <!-- </div> -->
+</div>
