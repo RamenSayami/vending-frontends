@@ -3,21 +3,20 @@
     <div class="card">
       <div class="card-header">
         Vending Machine Backend
+        <button class="btn btn-primary" (click)="changeSelection(0)">Inventory</button>
+        <button class="btn btn-primary" (click)="changeSelection(1)">Settings</button>
+        <button class="btn btn-primary" (click)="changeSelection(2)">Log</button>
+
       </div>
+
       <div class="card-body">
-        <div class="input-group mb-3">
+        <app-inventory *ngIf="currentIndex==0"></app-inventory>
+        <app-settings *ngIf="currentIndex==1"></app-settings>
+        <app-logs *ngIf="currentIndex==2"></app-logs>
 
-
-          <!-- <input type="text" class="form-control" placeholder="Email Address" [(ngModel)]="emailStr">
-                  <div class="input-group-append">
-                      <button class="btn btn-danger" (click)="subscribe()" type="button">Subscribe</button>
-                  </div> -->
-        </div>
       </div>
       <div class="card-footer">
         Reciept
-        <!-- <p class="text-success"> {{successMessage}} </p>
-              <p class="text-danger"> {{errorMessage}} </p> -->
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { environment } from '../../environments/environment';
+import { environment } from '../environments/environment';
 
 export class AppConstants {
   public static BASE_URL = environment.baseUrl;

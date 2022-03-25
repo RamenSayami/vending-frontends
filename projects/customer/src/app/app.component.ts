@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
 
   inventories: any[] = [];
   selectedDrink: any;
+  returnDrink : any;
   // quantity: number | undefined;
   // coins: number | undefined;
   reciept: any;
@@ -48,7 +49,14 @@ export class AppComponent implements OnInit {
 
   selectInventory(inventory: any) {
     console.log(inventory);
+    this.returnDrink = undefined;
     this.selectedDrink = inventory;
+  }
+
+  returnInventory(inventory: any) {
+    console.log(inventory);
+    this.selectedDrink = undefined;
+    this.returnDrink = inventory;
   }
 
   buyDrinks(form: NgForm) {
@@ -58,8 +66,28 @@ export class AppComponent implements OnInit {
     console.log(form.value);
     this.errorMessage = undefined;
     this.successMessage = undefined;
+    this.reciept = undefined;
     var buyDrinks = new BuyDrinks(this.selectedDrink.id, form.value);
     this.customerService.buyDrinks(buyDrinks).subscribe({
+      next: (res: any) => {
+        this.reciept = res.data;
+        console.log(res);
+        this.successMessage = res.message;
+        console.log(res.message);
+        // console.log(res.data);
+        this.getAllInventories();
+      },
+      error: (err) => {
+        this.errorMessage = err.error.message;
+        console.log(err);
+      }
+    })
+  }
+
+  returnDrinks(form: NgForm) {
+    console.log(form.value);
+    var returnDrinks = new BuyDrinks(this.selectedDrink.id, form.value);
+    this.customerService.buyDrinks(returnDrinks).subscribe({
       next: (res: any) => {
         this.reciept = res.data;
         console.log(res);

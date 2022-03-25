@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        Inventory
+
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <th scope="col"> Drink </th>
+            <th scope="col"> Price </th>
+            <th scope="col"> Stock </th>
+            <th scope="col"> Action </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let inventory of inventories">
+              <td scope="row"> {{inventory.name}} </td>
+              <td scope="row"> Rs.{{inventory.price}} </td>
+              <td scope="row"> {{inventory.currentStock}} </td>
+              <td scope="row">
+                <button class="btn btn-primary" (click)="editInventory(inventory)"> Edit
+                </button>
+                <button class="btn btn-danger" (click)="deleteInventory(inventory)"> Delete
+                </button>
+              </td>
+
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer">
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

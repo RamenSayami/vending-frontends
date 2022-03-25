@@ -21,8 +21,12 @@
                       <td scope="row"> {{inventory.name}} </td>
                       <td scope="row"> Rs.{{inventory.price}} </td>
                       <td scope="row"> {{inventory.currentStock}} </td>
-                      <td scope="row"> <button class="btn btn-primary" (click)="selectInventory(inventory)"> Select
-                        </button> </td>
+                      <td scope="row">
+                        <button class="btn btn-primary" (click)="selectInventory(inventory)"> Select
+                        </button>
+                        <button class="btn btn-danger" (click)="returnInventory(inventory)"> Return
+                        </button>
+                      </td>
 
                     </tr>
 
@@ -75,40 +79,111 @@
 
                 </div>
               </div>
-              <!-- <div class="card-body">
-                <div>
 
+            </div>
 
-                  Enter Quantity: <input class="input" type="number" placeholder="quantity"><br>
-                  Enter Coins:<input type="number" placeholder="coins">
-                  <button class="btn btn-danger">Buy Drinks</button>
+            <div class="card" *ngIf="returnDrink">
+              <div class="card-header">
+                <h4>Returning Drink : {{returnDrink.name}} </h4>
+
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5>Price per bottle: Rs.{{ returnDrink.price}}</h5>
+
+                    </div>
+                    <div class="card-body">
+                      <h5>Bottles Left: {{ returnDrink.currentStock}}</h5>
+                    </div>
+                    <div class="card-footer">
+                      <h5>Grand Total: Rs.{{ f.value.quantity * returnDrink.price}} </h5>
+
+                    </div>
+                  </div>
                 </div>
-              </div> -->
+                <div class="col-lg-6">
+                  <form #f="ngForm" (ngSubmit)="returnDrinks(f)" class="form-group">
+                    <div class="form-group">
+                      <label for="quantity1">How many do you want to return?</label>
+                      <input name="quantity" ngModel required #quantity="ngModel" type="number" min="1"
+                        max="{{returnDrink.currentStock}}" class="form-control" id="drinkQuantity"
+                        placeholder="Enter Quantity">
+                    </div>
+                    <!-- <div class="form-group">
+                    <label for="coins1">Insert Coins</label>
+                    <input name="coins" ngModel required #coins="ngModel" type="number" min="1" class="form-control"
+                      id="insertcoins" placeholder="Coins" ng-model="coins">>
+                    <small id="coinValue" class="form-text text-muted">Coin Value: {{coinValue?.numberValue}} </small>
+
+                  </div> -->
+                    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Return Drinks</button>
+                  </form>
+
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card" *ngIf="reciept">
-              <div class="card-header">
-                Reciept
-              </div>
-              <div class="card-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card" *ngIf="reciept">
+                <div class="card-header">
+                  <h5>Reciept </h5>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-check-label">Drink Name: {{reciept.inventory.name}} </label>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-check-label">Price: {{reciept.inventory.price}}</label>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-check-label">Quantity: {{reciept.quantity}}</label>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-check-label">Amount: Rs.{{reciept.amount}}</label>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-check-label">Required Coins: {{reciept.consumedCoins}}</label>
+                        </div>
+                      </div>
 
-              </div>
-              <div class="card-footer">
+                      <div class="col-lg-6">
+                        <div class="form-group">
+                          <label class="form-check-label">Total Coins Recieved: {{reciept.totalCoins}}</label>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-check-label">Total Currency Recieved: Rs.{{reciept.totalCurrency}}</label>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-check-label">Returned Coins: {{reciept.returnedCoins}}</label>
+                        </div>
+                        <div class="form-group">
+                          <label class="form-check-label">Returned Currency: Rs.{{reciept.returnedCurrency}}</label>
+                        </div>
+                      </div>
+                    </div>
 
+
+                  </form>
+                </div>
+                <div class="card-footer">
+                  <h6> Thank you! Vend again! </h6>
+                </div>
               </div>
+
             </div>
-
           </div>
         </div>
       </div>
+      <div class="card-footer">
+        <p class="text-success"> {{successMessage}} </p>
+        <p class="text-danger"> {{errorMessage}} </p>
+      </div>
     </div>
-    <div class="card-footer">
-      <p class="text-success"> {{successMessage}} </p>
-      <p class="text-danger"> {{errorMessage}} </p>
-    </div>
+    <!-- </div> -->
   </div>
-  <!-- </div> -->
-</div>

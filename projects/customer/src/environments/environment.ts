@@ -5,7 +5,7 @@
 export const environment = {
   baseUrl: 'http://localhost:8200',
 
-  production: false
+  production: false,
 };
 
 /*

@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        Settings
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <th scope="col"> Name </th>
+            <th scope="col"> Value </th>
+            <th scope="col"> NumberValue </th>
+            <th scope="col"> Action </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let setting of settings">
+              <td scope="row"> {{setting.name}} </td>
+              <td scope="row"> {{setting.value}} </td>
+              <td scope="row"> {{setting.numberValue}} </td>
+              <td scope="row">
+                <button class="btn btn-primary" *ngIf="setting.isEditable" (click)="editSetting(setting)"> Edit
+                </button>
+
+                <button class="btn btn-success" *ngIf="setting.name == 'VENDING_COINS'" (click)="editSetting(setting)">
+                  Add Coins
+                </button>
+                <button class="btn btn-info" *ngIf="setting.name == 'VENDING_COINS'" (click)="editSetting(setting)">
+                  Remove Coins
+                </button>
+              </td>
+
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer">
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
