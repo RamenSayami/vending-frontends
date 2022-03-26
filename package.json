@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:admin": "ng s --project=admin --port=4300",
+    "start:customer": "ng s --project=customer --port=4200",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

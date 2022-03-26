@@ -1,6 +1,7 @@
-# VendingFrontends
+# Vending Machine Frontends
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
+Vending Machine Frontends is a mono repo projects consisting of an admin module and customer module.
 
 ## Development server
 
