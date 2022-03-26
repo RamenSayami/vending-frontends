@@ -7,4 +7,5 @@ export class AppConstants {
   public static BUY_DRINKS = '/buy-drinks';
   public static RETURN_DRINKS = '/return-drinks';
   public static CUSTOMER = '/customer';
+  public static LOGS = '/logs';
 }

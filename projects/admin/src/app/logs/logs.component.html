@@ -1,1 +1,42 @@
-<p>logs works!</p>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header">
+        Logs
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <th scope="col"> Drink </th>
+            <th scope="col"> Price </th>
+            <th scope="col"> Quantity </th>
+            <th scope="col"> Total Coins </th>
+            <th scope="col"> Total Currency </th>
+            <th scope="col"> Consumed Coins </th>
+            <th scope="col"> Consumed Currency </th>
+            <th scope="col"> Returned Coins </th>
+            <th scope="col"> Returned Currency </th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let log of logs">
+              <td scope="row"> {{log.inventory.name}} </td>
+              <td scope="row"> {{log.inventory.price}} </td>
+              <td scope="row"> {{log.quantity}} </td>
+              <td scope="row"> {{log.totalCoins}} </td>
+              <td scope="row"> {{log.totalCurrency}} </td>
+              <td scope="row"> {{log.consumedCoins}} </td>
+              <td scope="row"> {{log.consumedCurrency}} </td>
+              <td scope="row"> {{log.returnedCoins}} </td>
+              <td scope="row"> {{log.returnedCurrency}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer">
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
